@@ -49,10 +49,10 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center section-padding max-w-5xl mx-auto">
-        {/* Badge */}
+        {/* Badge - Yüzü kapatmaması için yukarı taşındı ve boşluk artırıldı */}
         <div 
-          className={`inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-8 transition-all duration-700 ${
-            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          className={`inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-24 transition-all duration-1000 ${
+            isLoaded ? 'opacity-100 -translate-y-16' : 'opacity-0 translate-y-0'
           }`}
         >
           <Sparkles className="w-4 h-4 text-gold-light" />
