@@ -33,6 +33,13 @@ export function Navigation() {
     setIsMobileMenuOpen(false);
   };
 
+  // Butonlar için ortak stil sınıfı
+  const buttonStyle = `text-sm font-medium px-5 py-2.5 rounded-full border transition-all duration-300 ${
+    isScrolled 
+      ? 'border-gold text-gold hover:bg-gold hover:text-white' 
+      : 'border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-warm-dark'
+  }`;
+
   return (
     <>
       <nav
@@ -76,33 +83,19 @@ export function Navigation() {
               ))}
             </div>
 
-            {/* Right Section - Yeni Butonlar */}
+            {/* Right Section - Yeni Tasarımlı Butonlar */}
             <div className="hidden lg:flex items-center gap-4">
-              {/* Firmalar İçin Linki */}
-              <a 
-                href="#" 
-                className={`text-sm font-medium transition-colors duration-200 hover:text-gold mr-2 ${
-                  isScrolled ? 'text-warm-dark' : 'text-white/90'
-                }`}
-              >
+              <a href="#" className={buttonStyle}>
                 {t('nav.for_business')}
               </a>
 
-              {/* Giriş Yap / Üye Ol Linki */}
-              <a 
-                href="#" 
-                className={`text-sm font-medium transition-colors duration-200 hover:text-gold mr-2 ${
-                  isScrolled ? 'text-warm-dark' : 'text-white/90'
-                }`}
-              >
+              <a href="#" className={buttonStyle}>
                 {t('nav.login')} / {t('nav.register')}
               </a>
 
-              <LanguageSwitcher />
-
-              <button className={`btn-primary text-sm px-6 py-2.5 ${!isScrolled && 'bg-white/20 backdrop-blur-sm border border-white/30'}`}>
-                {t('nav.start')}
-              </button>
+              <div className="ml-2">
+                <LanguageSwitcher />
+              </div>
             </div>
 
             {/* Mobile Menu Button */}
@@ -150,11 +143,11 @@ export function Navigation() {
             
             <hr className="border-champagne-dark/20" />
 
-            {/* Mobil Menü Ek Linkler */}
-            <a href="#" className="text-lg font-medium text-warm-dark hover:text-gold py-1">
+            {/* Mobil Menü Butonları */}
+            <a href="#" className="flex items-center justify-center btn-primary w-full py-3">
               {t('nav.for_business')}
             </a>
-            <a href="#" className="text-lg font-medium text-warm-dark hover:text-gold py-1">
+            <a href="#" className="flex items-center justify-center border border-gold text-gold rounded-full w-full py-3 font-medium">
               {t('nav.login')} / {t('nav.register')}
             </a>
 
@@ -162,10 +155,6 @@ export function Navigation() {
               <span className="text-sm text-warm-gray">{t('footer.language')}</span>
               <LanguageSwitcher />
             </div>
-
-            <button className="btn-primary w-full mt-2">
-              {t('nav.start')}
-            </button>
           </div>
         </div>
       </div>
