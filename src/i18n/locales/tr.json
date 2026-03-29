@@ -6,7 +6,10 @@
     "planner": "Planlayıcı",
     "blog": "Blog",
     "start": "Başla",
-    "vendors": "Firmalar"
+    "vendors": "Firmalar",
+    "login": "Giriş Yap",
+    "register": "Üye Ol",
+    "for_business": "Firmalar İçin"
   },
   "hero": {
     "title": "Hayalinizdeki Düğün Burada Başlıyor",
