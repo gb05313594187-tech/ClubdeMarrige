@@ -1,0 +1,105 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "categories": "Kategoriler",
+    "inspiration": "İlham",
+    "planner": "Planlayıcı",
+    "blog": "Blog",
+    "start": "Başla",
+    "vendors": "Firmalar"
+  },
+  "hero": {
+    "title": "Hayalinizdeki Düğün Burada Başlıyor",
+    "subtitle": "Özel gününüz için en iyi firmaları keşfedin",
+    "explore": "Kategorileri Keşfet",
+    "create": "Planlayıcı Oluştur",
+    "scroll": "Kaydır"
+  },
+  "categories": {
+    "title": "Düğününüz İçin Her Şey",
+    "subtitle": "Özenle seçilmiş kategorilerimizi keşfedin",
+    "venues": "Düğün Mekanları",
+    "dresses": "Gelinlikler",
+    "photographers": "Fotoğrafçılar",
+    "planners": "Organizatörler",
+    "music": "Müzik & DJ",
+    "beauty": "Saç & Makyaj",
+    "flowers": "Çiçekçiler",
+    "catering": "İkram & Catering",
+    "vendors_count": "{{count}} firma"
+  },
+  "featured": {
+    "title": "Öne Çıkan Firmalarımız",
+    "subtitle": "Sizin için seçilmiş en iyi profesyoneller",
+    "view_profile": "Profili Gör",
+    "premium": "Premium",
+    "new": "Yeni",
+    "reviews": "değerlendirme"
+  },
+  "inspiration": {
+    "title": "Düğün İlhamı",
+    "all": "Tümü",
+    "rustic": "Rustik",
+    "modern": "Modern",
+    "classic": "Klasik",
+    "bohemian": "Bohem",
+    "beach": "Sahil",
+    "load_more": "Daha Fazla İlham",
+    "save": "Kaydet"
+  },
+  "planner": {
+    "title": "Düğün Planlayıcınız",
+    "subtitle": "Düğününüzü huzur içinde organize edin",
+    "feature_1": "Kişiselleştirilmiş checklist",
+    "feature_2": "Bütçe yönetimi",
+    "feature_3": "Etkileşimli timeline",
+    "feature_4": "Otomatik hatırlatmalar",
+    "cta": "Ücretsiz Başla",
+    "description": "Akıllı planlayıcımız hazırlığınızın her aşamasında size rehberlik eder. Özel gününüzün hiçbir detayını kaçırmayın."
+  },
+  "testimonials": {
+    "title": "Bizimle Evlenenler",
+    "subtitle": "Mutlu çiftlerin yorumlarını keşfedin"
+  },
+  "stats": {
+    "weddings": "Düğün",
+    "vendors": "Firma",
+    "couples": "Çift",
+    "satisfaction": "Memnuniyet"
+  },
+  "blog": {
+    "title": "İpuçları & Trendler",
+    "subtitle": "Uzman makalelerimizden ilham alın",
+    "read_more": "Devamını Oku",
+    "category_tips": "İpuçları",
+    "category_trends": "Trendler",
+    "category_real": "Gerçek Düğünler"
+  },
+  "newsletter": {
+    "title": "Özel İpuçlarımızı Alın",
+    "subtitle": "En iyi düğün tavsiyelerimizi almak için kaydolun",
+    "placeholder": "E-posta adresiniz",
+    "button": "Abone Ol",
+    "privacy": "Spam yok, söz veriyoruz!",
+    "success": "Aboneliğiniz için teşekkürler!"
+  },
+  "footer": {
+    "description": "Hayalinizdeki düğünü organize etmek için güvenilir ortağınız.",
+    "categories": "Kategoriler",
+    "company": "Şirket",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "careers": "Kariyer",
+    "legal": "Yasal",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Koşulları",
+    "cookies": "Çerezler",
+    "rights": "Tüm hakları saklıdır.",
+    "language": "Dil"
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English",
+    "tr": "Türkçe"
+  }
+}

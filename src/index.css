@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 50% 98%;
+    --foreground: 30 8% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 8% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 8% 16%;
+    --primary: 32 43% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 32 45% 90%;
+    --secondary-foreground: 30 8% 16%;
+    --muted: 32 30% 95%;
+    --muted-foreground: 30 5% 42%;
+    --accent: 350 40% 93%;
+    --accent-foreground: 30 8% 16%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 32 20% 88%;
+    --input: 32 20% 88%;
+    --ring: 32 43% 65%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 32 43% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 32 30% 95%;
+    --sidebar-accent-foreground: 30 8% 16%;
+    --sidebar-border: 32 20% 88%;
+    --sidebar-ring: 32 43% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-warm-white text-warm-dark font-inter antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gold text-white px-6 py-3 rounded-xl font-medium 
+           transition-all duration-300 hover:bg-gold-dark hover:shadow-gold-hover
+           hover:scale-[1.02] active:scale-[0.98];
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-white text-white px-6 py-3 rounded-xl 
+           font-medium transition-all duration-300 hover:bg-white/10 
+           hover:scale-[1.02] active:scale-[0.98];
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border-2 border-gold text-gold px-6 py-3 rounded-xl 
+           font-medium transition-all duration-300 hover:bg-gold hover:text-white 
+           hover:scale-[1.02] active:scale-[0.98];
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-card-hover;
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24;
+  }
+  
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent;
+  }
+  
+  .gradient-overlay {
+    @apply bg-gradient-to-t from-black/50 via-black/20 to-transparent;
+  }
+  
+  .blur-backdrop {
+    @apply backdrop-blur-md bg-white/80;
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFBF7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4A574;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8935F;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(212, 165, 116, 0.3);
+  color: #2D2A26;
+}

@@ -1,0 +1,105 @@
+{
+  "nav": {
+    "home": "Home",
+    "categories": "Categories",
+    "inspiration": "Inspiration",
+    "planner": "Planner",
+    "blog": "Blog",
+    "start": "Get Started",
+    "vendors": "Vendors"
+  },
+  "hero": {
+    "title": "Your Dream Wedding Starts Here",
+    "subtitle": "Discover the best vendors for your special day",
+    "explore": "Explore Categories",
+    "create": "Create My Planner",
+    "scroll": "Scroll"
+  },
+  "categories": {
+    "title": "Everything for Your Wedding",
+    "subtitle": "Explore our carefully selected categories",
+    "venues": "Wedding Venues",
+    "dresses": "Wedding Dresses",
+    "photographers": "Photographers",
+    "planners": "Wedding Planners",
+    "music": "Music & DJ",
+    "beauty": "Hair & Makeup",
+    "flowers": "Florists",
+    "catering": "Catering",
+    "vendors_count": "{{count}} vendors"
+  },
+  "featured": {
+    "title": "Our Featured Vendors",
+    "subtitle": "The best professionals selected for you",
+    "view_profile": "View Profile",
+    "premium": "Premium",
+    "new": "New",
+    "reviews": "reviews"
+  },
+  "inspiration": {
+    "title": "Wedding Inspiration",
+    "all": "All",
+    "rustic": "Rustic",
+    "modern": "Modern",
+    "classic": "Classic",
+    "bohemian": "Bohemian",
+    "beach": "Beach",
+    "load_more": "See More Inspiration",
+    "save": "Save"
+  },
+  "planner": {
+    "title": "Your Wedding Planner",
+    "subtitle": "Organize your wedding with peace of mind",
+    "feature_1": "Personalized checklist",
+    "feature_2": "Budget management",
+    "feature_3": "Interactive timeline",
+    "feature_4": "Automatic reminders",
+    "cta": "Start for Free",
+    "description": "Our intelligent planner guides you at every step of your preparation. Don't miss any detail of your special day."
+  },
+  "testimonials": {
+    "title": "They Said Yes With Us",
+    "subtitle": "Discover testimonials from happy couples"
+  },
+  "stats": {
+    "weddings": "Weddings",
+    "vendors": "Vendors",
+    "couples": "Couples",
+    "satisfaction": "Satisfaction"
+  },
+  "blog": {
+    "title": "Tips & Trends",
+    "subtitle": "Get inspired by our expert articles",
+    "read_more": "Read More",
+    "category_tips": "Tips",
+    "category_trends": "Trends",
+    "category_real": "Real Weddings"
+  },
+  "newsletter": {
+    "title": "Get Our Exclusive Tips",
+    "subtitle": "Sign up to receive our best wedding advice",
+    "placeholder": "Your email address",
+    "button": "Subscribe",
+    "privacy": "No spam, we promise!",
+    "success": "Thank you for subscribing!"
+  },
+  "footer": {
+    "description": "Your trusted partner to organize the wedding of your dreams.",
+    "categories": "Categories",
+    "company": "Company",
+    "about": "About Us",
+    "contact": "Contact",
+    "careers": "Careers",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "cookies": "Cookies",
+    "rights": "All rights reserved.",
+    "language": "Language"
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English",
+    "tr": "Türkçe"
+  }
+}

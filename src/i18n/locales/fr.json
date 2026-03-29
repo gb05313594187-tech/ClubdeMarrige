@@ -1,0 +1,105 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "categories": "Catégories",
+    "inspiration": "Inspiration",
+    "planner": "Planificateur",
+    "blog": "Blog",
+    "start": "Commencer",
+    "vendors": "Prestataires"
+  },
+  "hero": {
+    "title": "Votre Mariage de Rêve Commence Ici",
+    "subtitle": "Découvrez les meilleurs prestataires pour votre jour spécial",
+    "explore": "Explorer les Catégories",
+    "create": "Créer Mon Planificateur",
+    "scroll": "Défiler"
+  },
+  "categories": {
+    "title": "Tout pour Votre Mariage",
+    "subtitle": "Explorez nos catégories soigneusement sélectionnées",
+    "venues": "Lieux de Réception",
+    "dresses": "Robes de Mariée",
+    "photographers": "Photographes",
+    "planners": "Wedding Planners",
+    "music": "Musique & DJ",
+    "beauty": "Coiffure & Maquillage",
+    "flowers": "Fleuristes",
+    "catering": "Traiteurs",
+    "vendors_count": "{{count}} prestataires"
+  },
+  "featured": {
+    "title": "Nos Prestataires Vedettes",
+    "subtitle": "Les meilleurs professionnels sélectionnés pour vous",
+    "view_profile": "Voir le Profil",
+    "premium": "Premium",
+    "new": "Nouveau",
+    "reviews": "avis"
+  },
+  "inspiration": {
+    "title": "Inspiration Mariage",
+    "all": "Tous",
+    "rustic": "Rustique",
+    "modern": "Moderne",
+    "classic": "Classique",
+    "bohemian": "Bohème",
+    "beach": "Plage",
+    "load_more": "Voir Plus d'Inspiration",
+    "save": "Enregistrer"
+  },
+  "planner": {
+    "title": "Votre Planificateur de Mariage",
+    "subtitle": "Organisez votre mariage en toute sérénité",
+    "feature_1": "Checklist personnalisée",
+    "feature_2": "Gestion du budget",
+    "feature_3": "Timeline interactif",
+    "feature_4": "Rappels automatiques",
+    "cta": "Commencer Gratuitement",
+    "description": "Notre planificateur intelligent vous guide à chaque étape de votre préparation. Ne manquez aucun détail de votre jour spécial."
+  },
+  "testimonials": {
+    "title": "Ils Ont Dit Oui avec Nous",
+    "subtitle": "Découvrez les témoignages de couples heureux"
+  },
+  "stats": {
+    "weddings": "Mariages",
+    "vendors": "Prestataires",
+    "couples": "Couples",
+    "satisfaction": "Satisfaction"
+  },
+  "blog": {
+    "title": "Conseils & Tendances",
+    "subtitle": "Inspirez-vous de nos articles experts",
+    "read_more": "Lire la Suite",
+    "category_tips": "Conseils",
+    "category_trends": "Tendances",
+    "category_real": "Mariages Réels"
+  },
+  "newsletter": {
+    "title": "Recevez Nos Conseils Exclusifs",
+    "subtitle": "Inscrivez-vous pour recevoir nos meilleurs conseils de mariage",
+    "placeholder": "Votre adresse email",
+    "button": "S'inscrire",
+    "privacy": "Pas de spam, promis!",
+    "success": "Merci pour votre inscription!"
+  },
+  "footer": {
+    "description": "Votre partenaire de confiance pour organiser le mariage de vos rêves.",
+    "categories": "Catégories",
+    "company": "Entreprise",
+    "about": "À Propos",
+    "contact": "Contact",
+    "careers": "Carrières",
+    "legal": "Légal",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "cookies": "Cookies",
+    "rights": "Tous droits réservés.",
+    "language": "Langue"
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English",
+    "tr": "Türkçe"
+  }
+}
