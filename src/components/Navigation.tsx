@@ -76,10 +76,31 @@ export function Navigation() {
               ))}
             </div>
 
-            {/* Right Section */}
+            {/* Right Section - Yeni Butonlar */}
             <div className="hidden lg:flex items-center gap-4">
+              {/* Firmalar İçin Linki */}
+              <a 
+                href="#" 
+                className={`text-sm font-medium transition-colors duration-200 hover:text-gold mr-2 ${
+                  isScrolled ? 'text-warm-dark' : 'text-white/90'
+                }`}
+              >
+                {t('nav.for_business')}
+              </a>
+
+              {/* Giriş Yap / Üye Ol Linki */}
+              <a 
+                href="#" 
+                className={`text-sm font-medium transition-colors duration-200 hover:text-gold mr-2 ${
+                  isScrolled ? 'text-warm-dark' : 'text-white/90'
+                }`}
+              >
+                {t('nav.login')} / {t('nav.register')}
+              </a>
+
               <LanguageSwitcher />
-              <button className={`btn-primary text-sm ${!isScrolled && 'bg-white/20 backdrop-blur-sm border border-white/30'}`}>
+
+              <button className={`btn-primary text-sm px-6 py-2.5 ${!isScrolled && 'bg-white/20 backdrop-blur-sm border border-white/30'}`}>
                 {t('nav.start')}
               </button>
             </div>
@@ -126,11 +147,22 @@ export function Navigation() {
                 {t(`nav.${link.key}`)}
               </a>
             ))}
+            
             <hr className="border-champagne-dark/20" />
-            <div className="flex items-center justify-between">
+
+            {/* Mobil Menü Ek Linkler */}
+            <a href="#" className="text-lg font-medium text-warm-dark hover:text-gold py-1">
+              {t('nav.for_business')}
+            </a>
+            <a href="#" className="text-lg font-medium text-warm-dark hover:text-gold py-1">
+              {t('nav.login')} / {t('nav.register')}
+            </a>
+
+            <div className="flex items-center justify-between pt-2">
               <span className="text-sm text-warm-gray">{t('footer.language')}</span>
               <LanguageSwitcher />
             </div>
+
             <button className="btn-primary w-full mt-2">
               {t('nav.start')}
             </button>
