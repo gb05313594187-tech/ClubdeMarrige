@@ -57,7 +57,7 @@ export function Hero() {
         >
           <Sparkles className="w-4 h-4 text-gold-light" />
           <span className="text-white/90 text-sm font-medium tracking-wide">
-            Club de Mariage Français
+            Club de Mariage
           </span>
         </div>
 
