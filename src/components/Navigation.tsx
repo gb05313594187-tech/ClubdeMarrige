@@ -1,163 +1,62 @@
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { LanguageSwitcher } from './LanguageSwitcher';
-import { Menu, X, Heart } from 'lucide-react';
-
-const navLinks = [
-  { key: 'home', href: '#home' },
-  { key: 'categories', href: '#categories' },
-  { key: 'inspiration', href: '#inspiration' },
-  { key: 'planner', href: '#planner' },
-  { key: 'blog', href: '#blog' },
-];
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Heart, Menu, X, Globe } from 'lucide-react';
 
 export function Navigation() {
-  const { t } = useTranslation();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
-  // Butonlar için ortak stil sınıfı
-  const buttonStyle = `text-sm font-medium px-5 py-2.5 rounded-full border transition-all duration-300 ${
-    isScrolled 
-      ? 'border-gold text-gold hover:bg-gold hover:text-white' 
-      : 'border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-warm-dark'
-  }`;
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-card'
-            : 'bg-transparent'
-        }`}
-      >
-        <div className="section-padding">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <a 
-              href="#home" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
-              className="flex items-center gap-2 group"
-            >
-              <Heart className={`w-6 h-6 transition-colors duration-300 ${
-                isScrolled ? 'text-gold' : 'text-white'
-              } group-hover:scale-110`} />
-              <span className={`font-playfair text-xl font-semibold transition-colors duration-300 ${
-                isScrolled ? 'text-warm-dark' : 'text-white'
-              }`}>
-                Club de Mariage
-              </span>
-            </a>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#F1E9DB]">
+      <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+        
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 group">
+          <Heart className="w-6 h-6 text-[#C5A059] fill-[#C5A059]/10 group-hover:fill-[#C5A059] transition-all" />
+          <span className="text-xl font-playfair font-bold text-[#2D2D2D]">Club de Mariage</span>
+        </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.key}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
-                  className={`text-sm font-medium transition-colors duration-200 hover:text-gold ${
-                    isScrolled ? 'text-warm-dark' : 'text-white/90'
-                  }`}
-                >
-                  {t(`nav.${link.key}`)}
-                </a>
-              ))}
-            </div>
+        {/* Masaüstü Menü */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[#8E8E8E]">
+          <Link to="/" className="hover:text-[#C5A059] transition-colors">Ana Sayfa</Link>
+          <Link to="/kategoriler" className="hover:text-[#C5A059] transition-colors">Kategoriler</Link>
+          <Link to="/ilham" className="hover:text-[#C5A059] transition-colors">İlham</Link>
+          <Link to="/blog" className="hover:text-[#C5A059] transition-colors">Blog</Link>
+        </div>
 
-            {/* Right Section - Yeni Tasarımlı Butonlar */}
-            <div className="hidden lg:flex items-center gap-4">
-              <a href="#" className={buttonStyle}>
-                {t('nav.for_business')}
-              </a>
-
-              <a href="#" className={buttonStyle}>
-                {t('nav.login')} / {t('nav.register')}
-              </a>
-
-              <div className="ml-2">
-                <LanguageSwitcher />
-              </div>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className={`w-6 h-6 ${isScrolled ? 'text-warm-dark' : 'text-white'}`} />
-              ) : (
-                <Menu className={`w-6 h-6 ${isScrolled ? 'text-warm-dark' : 'text-white'}`} />
-              )}
-            </button>
+        {/* Sağ Butonlar */}
+        <div className="hidden md:flex items-center gap-4">
+          <Link 
+            to="/business" 
+            className="px-5 py-2.5 rounded-xl border border-[#C5A059]/30 text-[#C5A059] hover:bg-[#FDF6E9] transition-all"
+          >
+            Firmalar İçin
+          </Link>
+          <Link 
+            to="/login" 
+            className="px-5 py-2.5 rounded-xl bg-[#D4A373] text-white hover:bg-[#C59668] transition-all shadow-lg shadow-[#D4A373]/20"
+          >
+            Giriş Yap / Üye Ol
+          </Link>
+          <div className="flex items-center gap-1 text-[#8E8E8E] ml-2">
+            <Globe size={16} />
+            <span className="text-xs uppercase font-bold">TR</span>
           </div>
         </div>
-      </nav>
 
-      {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
-      >
-        <div 
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-        <div
-          className={`absolute top-20 left-4 right-4 bg-white rounded-2xl shadow-card-hover p-6 transition-all duration-300 ${
-            isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'
-          }`}
-        >
-          <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.key}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
-                className="text-lg font-medium text-warm-dark hover:text-gold transition-colors py-2"
-              >
-                {t(`nav.${link.key}`)}
-              </a>
-            ))}
-            
-            <hr className="border-champagne-dark/20" />
-
-            {/* Mobil Menü Butonları */}
-            <a href="#" className="flex items-center justify-center btn-primary w-full py-3">
-              {t('nav.for_business')}
-            </a>
-            <a href="#" className="flex items-center justify-center border border-gold text-gold rounded-full w-full py-3 font-medium">
-              {t('nav.login')} / {t('nav.register')}
-            </a>
-
-            <div className="flex items-center justify-between pt-2">
-              <span className="text-sm text-warm-gray">{t('footer.language')}</span>
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </div>
+        {/* Mobil Menü Butonu */}
+        <button className="md:hidden text-[#2D2D2D]" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X /> : <Menu />}
+        </button>
       </div>
-    </>
+
+      {/* Mobil Menü İçeriği */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-b border-[#F1E9DB] p-4 flex flex-col gap-4 animate-in slide-in-from-top">
+          <Link to="/" onClick={() => setIsOpen(false)} className="py-2 text-[#8E8E8E]">Ana Sayfa</Link>
+          <Link to="/business" onClick={() => setIsOpen(false)} className="py-2 text-[#C5A059] font-semibold">Firmalar İçin</Link>
+          <Link to="/login" onClick={() => setIsOpen(false)} className="w-full text-center bg-[#D4A373] text-white py-3 rounded-xl font-bold">Giriş Yap</Link>
+        </div>
+      )}
+    </nav>
   );
 }
