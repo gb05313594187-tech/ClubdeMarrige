@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { 
@@ -12,14 +14,14 @@ import {
 } from 'lucide-react';
 
 const categories = [
-  { key: 'venues', icon: Building2, image: '/images/category-venues.jpg', count: 1250 },
-  { key: 'dresses', icon: Sparkles, image: '/images/category-dresses.jpg', count: 890 },
-  { key: 'photographers', icon: Camera, image: '/images/category-photographers.jpg', count: 650 },
-  { key: 'planners', icon: Calendar, image: '/images/category-planners.jpg', count: 420 },
-  { key: 'music', icon: Music, image: '/images/category-music.jpg', count: 380 },
-  { key: 'beauty', icon: Scissors, image: '/images/category-beauty.jpg', count: 520 },
-  { key: 'flowers', icon: Flower2, image: '/images/category-flowers.jpg', count: 340 },
-  { key: 'catering', icon: UtensilsCrossed, image: '/images/category-catering.jpg', count: 480 },
+  { key: 'venues', icon: Building2, image: '/images/category-venues.jpg', count: 1250, slug: 'dugun-mekanlari' },
+  { key: 'dresses', icon: Sparkles, image: '/images/category-dresses.jpg', count: 890, slug: 'gelinlikler' },
+  { key: 'photographers', icon: Camera, image: '/images/category-photographers.jpg', count: 650, slug: 'fotografcilar' },
+  { key: 'planners', icon: Calendar, image: '/images/category-planners.jpg', count: 420, slug: 'organizatorler' },
+  { key: 'music', icon: Music, image: '/images/category-music.jpg', count: 380, slug: 'muzik-dj' },
+  { key: 'beauty', icon: Scissors, image: '/images/category-beauty.jpg', count: 520, slug: 'sac-makyaj' },
+  { key: 'flowers', icon: Flower2, image: '/images/category-flowers.jpg', count: 340, slug: 'cicekciler' },
+  { key: 'catering', icon: UtensilsCrossed, image: '/images/category-catering.jpg', count: 480, slug: 'ikram-catering' },
 ];
 
 export function Categories() {
@@ -55,14 +57,15 @@ export function Categories() {
           {categories.map((category, index) => {
             const Icon = category.icon;
             return (
-              <div
+              <Link
                 key={category.key}
-                className={`group relative overflow-hidden rounded-2xl bg-white shadow-card card-hover cursor-pointer transition-all duration-600 ${
+                to={`/kategoriler/${category.slug}`}
+                className={`group relative block overflow-hidden rounded-2xl bg-white shadow-card card-hover transition-all duration-600 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                {/* Image */}
+                {/* Image Section */}
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={category.image}
@@ -77,8 +80,8 @@ export function Categories() {
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-5">
+                {/* Content Section */}
+                <div className="p-5 bg-white">
                   <h3 className="font-playfair text-lg font-semibold text-warm-dark mb-1 group-hover:text-gold transition-colors">
                     {t(`categories.${category.key}`)}
                   </h3>
@@ -89,7 +92,7 @@ export function Categories() {
 
                 {/* Hover Border Effect */}
                 <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-2xl transition-colors duration-300 pointer-events-none" />
-              </div>
+              </Link>
             );
           })}
         </div>
