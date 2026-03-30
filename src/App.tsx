@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/sections/Hero';
@@ -12,13 +12,12 @@ import { Blog } from '@/sections/Blog';
 import { Newsletter } from '@/sections/Newsletter';
 import { Footer } from '@/sections/Footer';
 
-// Yeni Sayfalar
-import AuthPage from '@/pages/AuthPage';
-import BusinessPage from '@/pages/BusinessPage';
+// Hataları önlemek için sayfaları lazy load ile çağırıyoruz
+const AuthPage = lazy(() => import('@/pages/AuthPage'));
+const BusinessPage = lazy(() => import('@/pages/BusinessPage'));
 
 import './i18n';
 
-// Ana Sayfa Bileşeni (Tüm sectionları buraya topladık)
 const HomePage = () => (
   <main>
     <Hero />
@@ -36,24 +35,15 @@ const HomePage = () => (
 function App() {
   return (
     <Router>
-      <Suspense fallback={<div className="min-h-screen bg-warm-white" />}>
+      <Suspense fallback={<div className="min-h-screen bg-warm-white flex items-center justify-center">Yükleniyor...</div>}>
         <div className="min-h-screen bg-warm-white">
           <Navigation />
-          
           <Routes>
-            {/* Ana Sayfa */}
             <Route path="/" element={<HomePage />} />
-            
-            {/* Giriş Yap Sayfası */}
             <Route path="/login" element={<AuthPage mode="login" />} />
-            
-            {/* Kayıt Ol Sayfası */}
             <Route path="/register" element={<AuthPage mode="register" />} />
-            
-            {/* Firmalar İçin Sayfası */}
             <Route path="/business" element={<BusinessPage />} />
           </Routes>
-
           <Footer />
         </div>
       </Suspense>
