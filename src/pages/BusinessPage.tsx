@@ -70,15 +70,27 @@ export default function BusinessPage() {
               ))}
             </div>
           </div>
-          <div className="flex-1 w-full h-64 bg-[#E9E4DB] rounded-3xl overflow-hidden shadow-inner flex items-center justify-center italic text-[#8E8E8E]">
-            {/* Buraya işletme paneli ekran görüntüsü gelebilir */}
-            Dashboard Önizleme
+
+          {/* GÜNCELLENEN GÖRSEL ALANI */}
+          <div className="flex-1 w-full h-80 rounded-3xl overflow-hidden shadow-2xl relative border border-white/50 group">
+            <img 
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" 
+              alt="Club de Mariage Dashboard Preview"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Altın Tonlu Overlay - Marka ile uyum için */}
+            <div className="absolute inset-0 bg-[#C5A059]/10 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            
+            {/* Dashboard Etiketi */}
+            <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl border border-[#C5A059]/20 shadow-sm">
+              <span className="text-[#C5A059] text-xs font-bold uppercase tracking-wider">Yönetim Paneli Önizleme</span>
+            </div>
           </div>
         </div>
 
         {/* CTA Buton Bölümü */}
         <div className="text-center bg-[#2D2D2D] rounded-[40px] p-12 md:p-20 relative overflow-hidden text-white shadow-2xl">
-          {/* Dekoratif Arkaplan Efekti */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#D4A373]/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#C5A059]/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
           
