@@ -16,9 +16,10 @@ import { Statistics } from '@/sections/Statistics';
 import { Blog } from '@/sections/Blog';
 import { Newsletter } from '@/sections/Newsletter';
 
-// Sayfalar - Lazy Load (Hata payını azaltmak için)
+// Sayfalar - Lazy Load
 const AuthPage = lazy(() => import('./pages/AuthPage'));
 const BusinessPage = lazy(() => import('./pages/BusinessPage'));
+const CategoryDetailPage = lazy(() => import('./pages/CategoryDetailPage')); // EKLEDİK
 
 // Dil Ayarları (i18n)
 import './i18n';
@@ -38,52 +39,38 @@ const HomePage = () => (
   </main>
 );
 
-// Yükleme Ekranı (Fallback)
+// Yükleme Ekranı
 const LoadingScreen = () => (
   <div className="min-h-screen bg-[#FDFBF7] flex items-center justify-center font-playfair text-[#C5A059] text-xl">
     Yükleniyor...
   </div>
 );
 
-/**
- * App Bileşeni
- * Projenin ana yönlendirme (routing) yapısını kurar.
- */
 export default function App() {
   return (
     <Router>
       <Suspense fallback={<LoadingScreen />}>
         <div className="min-h-screen bg-white">
-          {/* Her sayfada görünmesi gereken menü */}
           <Navigation />
           
           <Routes>
             {/* Ana Sayfa */}
             <Route path="/" element={<HomePage />} />
             
-            {/* Giriş Yap Sayfası */}
-            <Route 
-              path="/login" 
-              element={<AuthPage mode="login" />} 
-            />
+            {/* Kategori Detay Sayfası - BU ROTA OLMADAN SAYFALAR AÇILMAZ */}
+            <Route path="/kategoriler/:categorySlug" element={<CategoryDetailPage />} />
             
-            {/* Kayıt Ol Sayfası */}
-            <Route 
-              path="/register" 
-              element={<AuthPage mode="register" />} 
-            />
+            {/* Giriş / Kayıt */}
+            <Route path="/login" element={<AuthPage mode="login" />} />
+            <Route path="/register" element={<AuthPage mode="register" />} />
             
-            {/* Firmalar İçin / Kurumsal Sayfa */}
-            <Route 
-              path="/business" 
-              element={<BusinessPage />} 
-            />
+            {/* Kurumsal */}
+            <Route path="/business" element={<BusinessPage />} />
             
-            {/* 404 veya Hatalı URL Durumunda Ana Sayfaya Dön */}
+            {/* Hatalı URL'leri Ana Sayfaya Gönder */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
 
-          {/* Her sayfada görünmesi gereken alt bilgi alanı */}
           <Footer />
         </div>
       </Suspense>
