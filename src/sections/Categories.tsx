@@ -13,6 +13,11 @@ import {
   UtensilsCrossed 
 } from 'lucide-react';
 
+/**
+ * Kategori Verileri
+ * slug: URL'de görünecek olan kısımdır.
+ * key: i18n çeviri dosyasındaki anahtardır.
+ */
 const categories = [
   { key: 'venues', icon: Building2, image: '/images/category-venues.jpg', count: 1250, slug: 'dugun-mekanlari' },
   { key: 'dresses', icon: Sparkles, image: '/images/category-dresses.jpg', count: 890, slug: 'gelinlikler' },
@@ -30,14 +35,14 @@ export function Categories() {
 
   return (
     <section
-      id="categories"
+      id="categories" // Navigation.tsx ile uyumlu olması için 'categories' yaptık
       ref={ref}
       className="py-20 lg:py-32 bg-warm-white"
     >
       <div className="section-padding">
-        {/* Section Header */}
+        {/* Başlık Alanı */}
         <div 
-          className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-600 ${
+          className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -52,46 +57,53 @@ export function Categories() {
           </p>
         </div>
 
-        {/* Categories Grid */}
+        {/* Kategori Kartları Izgarası */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => {
             const Icon = category.icon;
+            
             return (
               <Link
                 key={category.key}
                 to={`/kategoriler/${category.slug}`}
-                className={`group relative block overflow-hidden rounded-2xl bg-white shadow-card card-hover transition-all duration-600 ${
+                className={`group relative block overflow-hidden rounded-2xl bg-white shadow-card transition-all duration-700 hover:-translate-y-2 hover:shadow-xl ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                {/* Image Section */}
-                <div className="relative h-48 overflow-hidden">
+                {/* Görsel Katmanı */}
+                <div className="relative h-56 overflow-hidden">
                   <img
                     src={category.image}
                     alt={t(`categories.${category.key}`)}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  {/* Karartma Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
                   
-                  {/* Icon Badge */}
-                  <div className="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
+                  {/* İkon Rozeti */}
+                  <div className="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg transform transition-transform group-hover:rotate-12">
                     <Icon className="w-5 h-5 text-gold" />
                   </div>
                 </div>
 
-                {/* Content Section */}
-                <div className="p-5 bg-white">
-                  <h3 className="font-playfair text-lg font-semibold text-warm-dark mb-1 group-hover:text-gold transition-colors">
+                {/* Bilgi Katmanı */}
+                <div className="p-6 bg-white relative">
+                  <h3 className="font-playfair text-xl font-semibold text-warm-dark mb-1 group-hover:text-gold transition-colors">
                     {t(`categories.${category.key}`)}
                   </h3>
-                  <p className="text-sm text-warm-gray">
-                    {t('categories.vendors_count', { count: category.count.toLocaleString() })}
-                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm text-warm-gray">
+                      {t('categories.vendors_count', { count: category.count.toLocaleString() })}
+                    </p>
+                    <span className="text-gold text-xs font-bold opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0">
+                      İncele →
+                    </span>
+                  </div>
                 </div>
 
-                {/* Hover Border Effect */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-2xl transition-colors duration-300 pointer-events-none" />
+                {/* Hover Çerçeve Efekti */}
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/20 rounded-2xl transition-colors duration-300 pointer-events-none" />
               </Link>
             );
           })}
