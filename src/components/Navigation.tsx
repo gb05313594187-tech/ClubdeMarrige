@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Heart, Menu, X, Globe, ChevronDown } from 'lucide-react';
 
 /**
  * Navigation Bileşeni
- * - Scroll durumuna göre dinamik arka plan değişimi yapar.
- * - Anasayfada 'Kategoriler'e tıklandığında pürüzsüz kaydırma sağlar.
- * - Mobil uyumlu menü yapısına sahiptir.
+ * - Sayfa geçişlerini ve anasayfa içi kaydırmaları yönetir.
+ * - Cloudflare yönlendirme hatalarını önlemek için temiz Link yapısı kullanır.
  */
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  // Sayfa kaydırıldığında navigasyonun görünümünü güncelle
+  // Sayfa kaydırıldığında navigasyonun arka planını netleştir
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -22,28 +22,40 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Sayfa (URL) değiştiğinde mobil menüyü kapat
+  // Sayfa değiştiğinde mobil menüyü kapat
   useEffect(() => {
     setIsOpen(false);
-  }, [location]);
+    // Sayfa değiştiğinde en üste çıkmasını sağlar
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   /**
-   * Kategoriler linkine tıklandığında davranışı belirler.
-   * Eğer anasayfadaysak sayfayı kaydırır, başka sayfadaysak anasayfaya yönlendirir.
+   * Kategoriler linkine tıklandığında:
+   * 1. Anasayfadaysak: Yumuşakça kategoriler bölümüne kaydırır.
+   * 2. Başka sayfadaysak: Önce anasayfaya gider, sonra kaydırır.
    */
   const handleCategoriesClick = (e: React.MouseEvent) => {
-    if (location.pathname === '/') {
-      e.preventDefault();
-      const categoriesSection = document.getElementById('kategoriler');
-      if (categoriesSection) {
-        categoriesSection.scrollIntoView({ behavior: 'smooth' });
-      }
+    e.preventDefault();
+    
+    if (location.pathname !== '/') {
+      // Eğer anasayfada değilsek, önce anasayfaya git
+      navigate('/');
+      // Sayfa yüklendikten kısa bir süre sonra kaydır
+      setTimeout(() => {
+        const element = document.getElementById('categories');
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      // Zaten anasayfadaysak sadece kaydır
+      const element = document.getElementById('categories');
+      element?.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsOpen(false);
   };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-white/50 backdrop-blur-sm py-5'
+      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-white/50 backdrop-blur-sm py-5'
     } border-b border-[#F1E9DB]`}>
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         
@@ -63,13 +75,13 @@ export function Navigation() {
             Ana Sayfa
           </Link>
           
-          <Link 
-            to="/#kategoriler" 
+          <a 
+            href="#categories" 
             onClick={handleCategoriesClick}
-            className="hover:text-[#C5A059] transition-colors flex items-center gap-1"
+            className="hover:text-[#C5A059] transition-colors flex items-center gap-1 cursor-pointer"
           >
             Kategoriler <ChevronDown size={14} />
-          </Link>
+          </a>
 
           <Link to="/ilham" className={`hover:text-[#C5A059] transition-colors ${location.pathname === '/ilham' ? 'text-[#C5A059]' : ''}`}>
             İlham
@@ -117,13 +129,13 @@ export function Navigation() {
         <div className="absolute top-full left-0 right-0 bg-white border-b border-[#F1E9DB] p-6 flex flex-col gap-5 md:hidden animate-in fade-in slide-in-from-top-4 duration-300">
           <div className="flex flex-col gap-4">
             <Link to="/" className="text-lg font-medium text-[#2D2D2D] py-2 border-b border-gray-50 font-playfair">Ana Sayfa</Link>
-            <Link 
-              to="/#kategoriler" 
-              onClick={(e) => { handleCategoriesClick(e); setIsOpen(false); }} 
+            <a 
+              href="#categories" 
+              onClick={handleCategoriesClick}
               className="text-lg font-medium text-[#2D2D2D] py-2 border-b border-gray-50 font-playfair"
             >
               Kategoriler
-            </Link>
+            </a>
             <Link to="/ilham" className="text-lg font-medium text-[#2D2D2D] py-2 border-b border-gray-50 font-playfair">İlham</Link>
             <Link to="/business" className="text-lg font-semibold text-[#C5A059] py-2 font-playfair">Firmalar İçin</Link>
           </div>
