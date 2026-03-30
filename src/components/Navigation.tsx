@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Heart, Menu, X, Globe, ChevronDown } from 'lucide-react';
 
+/**
+ * Navigation Bileşeni
+ * - Scroll durumuna göre dinamik arka plan değişimi yapar.
+ * - Anasayfada 'Kategoriler'e tıklandığında pürüzsüz kaydırma sağlar.
+ * - Mobil uyumlu menü yapısına sahiptir.
+ */
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  // Sayfa kaydırıldığında navigasyonun arka planını netleştir
+  // Sayfa kaydırıldığında navigasyonun görünümünü güncelle
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -16,10 +22,24 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Sayfa değiştiğinde mobil menüyü kapat
+  // Sayfa (URL) değiştiğinde mobil menüyü kapat
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
+
+  /**
+   * Kategoriler linkine tıklandığında davranışı belirler.
+   * Eğer anasayfadaysak sayfayı kaydırır, başka sayfadaysak anasayfaya yönlendirir.
+   */
+  const handleCategoriesClick = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      const categoriesSection = document.getElementById('kategoriler');
+      if (categoriesSection) {
+        categoriesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -42,9 +62,15 @@ export function Navigation() {
           <Link to="/" className={`hover:text-[#C5A059] transition-colors ${location.pathname === '/' ? 'text-[#C5A059]' : ''}`}>
             Ana Sayfa
           </Link>
-          <Link to="/#kategoriler" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
+          
+          <Link 
+            to="/#kategoriler" 
+            onClick={handleCategoriesClick}
+            className="hover:text-[#C5A059] transition-colors flex items-center gap-1"
+          >
             Kategoriler <ChevronDown size={14} />
           </Link>
+
           <Link to="/ilham" className={`hover:text-[#C5A059] transition-colors ${location.pathname === '/ilham' ? 'text-[#C5A059]' : ''}`}>
             İlham
           </Link>
@@ -62,7 +88,9 @@ export function Navigation() {
 
           <Link 
             to="/business" 
-            className="text-[14px] font-bold text-[#C5A059] hover:text-[#B38E48] transition-colors border-r border-[#F1E9DB] pr-5"
+            className={`text-[14px] font-bold transition-colors border-r border-[#F1E9DB] pr-5 ${
+              location.pathname === '/business' ? 'text-[#B38E48]' : 'text-[#C5A059] hover:text-[#B38E48]'
+            }`}
           >
             Firmalar İçin
           </Link>
@@ -88,15 +116,21 @@ export function Navigation() {
       {isOpen && (
         <div className="absolute top-full left-0 right-0 bg-white border-b border-[#F1E9DB] p-6 flex flex-col gap-5 md:hidden animate-in fade-in slide-in-from-top-4 duration-300">
           <div className="flex flex-col gap-4">
-            <Link to="/" className="text-lg font-medium text-[#2D2D2D] py-2 border-b border-gray-50">Ana Sayfa</Link>
-            <Link to="/ilham" className="text-lg font-medium text-[#2D2D2D] py-2 border-b border-gray-50">İlham</Link>
-            <Link to="/blog" className="text-lg font-medium text-[#2D2D2D] py-2 border-b border-gray-50">Blog</Link>
-            <Link to="/business" className="text-lg font-semibold text-[#C5A059] py-2">Firmalar İçin</Link>
+            <Link to="/" className="text-lg font-medium text-[#2D2D2D] py-2 border-b border-gray-50 font-playfair">Ana Sayfa</Link>
+            <Link 
+              to="/#kategoriler" 
+              onClick={(e) => { handleCategoriesClick(e); setIsOpen(false); }} 
+              className="text-lg font-medium text-[#2D2D2D] py-2 border-b border-gray-50 font-playfair"
+            >
+              Kategoriler
+            </Link>
+            <Link to="/ilham" className="text-lg font-medium text-[#2D2D2D] py-2 border-b border-gray-50 font-playfair">İlham</Link>
+            <Link to="/business" className="text-lg font-semibold text-[#C5A059] py-2 font-playfair">Firmalar İçin</Link>
           </div>
           
           <Link 
             to="/login" 
-            className="w-full text-center bg-[#D4A373] text-white py-4 rounded-2xl font-bold shadow-xl shadow-[#D4A373]/10"
+            className="w-full text-center bg-[#D4A373] text-white py-4 rounded-2xl font-bold shadow-xl shadow-[#D4A373]/10 active:scale-95 transition-transform"
           >
             Giriş Yap / Üye Ol
           </Link>
