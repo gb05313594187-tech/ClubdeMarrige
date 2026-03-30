@@ -8,35 +8,39 @@ export function Navigation() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Scroll takibi
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Sayfa değişince menüyü kapat ve yukarı çık
   useEffect(() => {
     setIsOpen(false);
-    window.scrollTo(0, 0);
+    // Eğer bir kategori sayfasına gidilmişse en üste kaydır
+    if (location.pathname.includes('/kategoriler/')) {
+      window.scrollTo(0, 0);
+    }
   }, [location.pathname]);
 
   const handleCategoriesClick = (e: React.MouseEvent) => {
     e.preventDefault();
     
+    // Eğer ana sayfada değilsek önce ana sayfaya git
     if (location.pathname !== '/') {
-      // Başka sayfadaysak önce ana sayfaya git, sonra kaydır
       navigate('/');
+      // Sayfanın yüklenmesi için kısa bir bekleme
       setTimeout(() => {
         const element = document.getElementById('categories');
-        element?.scrollIntoView({ behavior: 'smooth' });
-      }, 150);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     } else {
       // Zaten ana sayfadaysak sadece kaydır
       const element = document.getElementById('categories');
-      element?.scrollIntoView({ behavior: 'smooth' });
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsOpen(false);
   };
@@ -47,7 +51,7 @@ export function Navigation() {
     } border-b border-[#F1E9DB]`}>
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         
-        {/* Logo */}
+        {/* Logo - Her zaman ana sayfaya döndürür */}
         <Link to="/" className="flex items-center gap-2 group">
           <div className="w-10 h-10 bg-[#FDF6E9] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
             <Heart className="w-5 h-5 text-[#C5A059] fill-[#C5A059]/10 group-hover:fill-[#C5A059]" />
@@ -63,6 +67,7 @@ export function Navigation() {
             Ana Sayfa
           </Link>
           
+          {/* Bu link sadece ana sayfadaki 'Categories' bölümüne kaydırır */}
           <a 
             href="#categories" 
             onClick={handleCategoriesClick}
